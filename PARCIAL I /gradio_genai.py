@@ -1,9 +1,7 @@
 import gradio as gr
 from google import genai #intentaremos emplear la inteligencia artificial para crear nuestra plataforma
-client = genai.Client(api_key="AQ.Ab8RN6IjeVmOpA3Ncbdq0ncCG-6u_f7rx-D-OXFDmjD_h3rvpA")
-import gradio as gr #importamos Gradio
-import random
-def generar_itinerario(destino, tipo_viaje, rango_precio, comidas, lugares_deseados, dias_viaje, transporte_elegido): # def funciona para definir nuestra propia función, la cual (en este caso) necesita el destino y el tipo de viaje.
+client = genai.Client(api_key="AQ.Ab8RN6IAsuNFhHaCYgLxqHrfEw-KmXTvYHXTM5gnyH2xmsFPLQ")
+def generar_itinerario(destino, tipo_viaje, rango_precio, comidas, dias_viaje, transporte_elegido, lugares_deseados): # def funciona para definir nuestra propia función, la cual (en este caso) necesita el destino y el tipo de viaje.
     if destino.strip() == "":
         return "Por favor ingresa tu destino"
     if lugares_deseados.strip() == "":
@@ -46,12 +44,8 @@ def generar_itinerario(destino, tipo_viaje, rango_precio, comidas, lugares_desea
     return respuesta_ia.text
 
 with gr.Blocks(theme=gr.Theme.from_hub("harsh8001/minimal-orange")) as WHERV_web: #gr.Blocks indica que hay que crear un "lienzo web"
-    
- with gr.Blocks(theme=gr.Theme.from_hub("harsh8001/minimal-orange")) as parcial_web: #gr.Blocks indica que hay que crear un "lienzo web"
     gr.Markdown("# WHERV?") # El símbolo "#" indica que el texto va en negrita
     gr.Markdown("PARCIAL I - Gradio")
-
-
 
     with gr.Row(): #estas son las filas que dividen la pantalla en dos columnas
         with gr.Column():
@@ -65,7 +59,7 @@ with gr.Blocks(theme=gr.Theme.from_hub("harsh8001/minimal-orange")) as WHERV_web
                 value= "Un poco de todo (Mix)"
             )
             slider_precio = gr.Slider(
-                minimum = 20,
+                minimum = 10,
                 maximum = 2500,
                 step = 50,
                 label = "Presupuesto estimado por dia",
@@ -79,7 +73,7 @@ with gr.Blocks(theme=gr.Theme.from_hub("harsh8001/minimal-orange")) as WHERV_web
             radio_dias = gr.Radio(
                 choices = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15"],
                 label = "Duracion de viaje (No. de dias)",
-                value = 3
+                value = "3"
             )
             menu_transporte = gr.Dropdown(
                 choices= ["Taxi/Uber", "Buses turísticos (hop-on hop-off)", "Tren/Metro", "Caminando"],
@@ -97,11 +91,19 @@ with gr.Blocks(theme=gr.Theme.from_hub("harsh8001/minimal-orange")) as WHERV_web
             label = "Tu plan de viaje sugerido",
             lines = 32,
             interactive = False #hace que solo sea de lectura
-        )
+            )
+
 # P3 - CONEXION
     boton_buscar.click(
         fn=generar_itinerario,
-        inputs=[caja_destino, menu_experiencia, slider_precio, check_comidas, caja_lugares, radio_dias, menu_transporte,],
+        inputs=[
+                caja_destino, 
+                menu_experiencia, 
+                slider_precio, 
+                check_comidas, 
+                radio_dias, 
+                menu_transporte,
+                caja_lugares],
         outputs=pantalla_salida
     )
 if __name__ == "__main__":

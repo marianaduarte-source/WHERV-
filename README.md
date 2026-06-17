@@ -36,6 +36,7 @@ Si no es activado, la aplicación web no funcionará.
 **Links de apoyo para instalación de virtual environment:** 
 -	https://youtu.be/nBpxdq9-O08?si=qyZQuGC4hltUAEU8
 -	https://gradio.app/main/guides/installing-gradio-in-a-virtual-environment
+
 **ENLACE:** Cuando se corre el programa, la terminal proporcionará dos URL, cualquiera de los dos permitirá el uso del sitio. Sin embargo, es importante mencionar que el segundo es el que permite compartirlo con otros. También es necesario saber que los enlaces no se actualizan y si se realizan cambios en el código, estos no serán reflejados en el frontend. Por ello, es necesario volver a correr el código, copiar el nuevo enlace y pegarlo en el buscador.  
 
 **POSIBLES PROBLEMAS PARA ENFRENTAR**

@@ -7,6 +7,9 @@ Gradio es una librería de código cuyo propósito es facilitar el desarrollo de
 -	REQUESTS: Se emplea para conectarse con servidores externos mediante protocolos HTTP. Se ha utilizado para obtener los datos de las tasas de cambio de un URL. 
 -	PYTHON-DOTENV: Permite cargar variables desde un archivo “.env” para proteger credenciales. En el proyecto, se utilizó para proteger el API Key de Google genai.
 
+```bash
+pip install gradio google-genai requests python-dotenv
+```
 **CASO DE USO:** Aunque a todos nos agrade viajar, a nadie le gusta el tedioso proceso de armar el itinerario de viaje. Los usuarios deben investigar qué actividades hacer, si estos se alinean con sus gustos particulares, condiciones en las que se viaja, integrantes, etc. No hay manera alguna en la que es posible hacer esto sin navegar por decenas de sitios en la web. Por ello, se pretenderá emplear Gradio para generar una aplicación web interactiva que optimice dicho proceso.  
 **FUNCIONES**
 1.	gr.Blocks(): Permite al programador controlar el diseño de la página. Delimita el espacio digital donde se van a renderizar, agrupar y conectar todos los componentes lógicos.
